@@ -1,29 +1,5 @@
 <?php
 
-
-########################################################################
-#
-# LIB_mysql.php     MySQL database Routines
-#
-#-----------------------------------------------------------------------
-# FUNCTIONS
-#
-#    insert()
-#               Inserts a row into database,
-#               as defined by a keyed array
-#
-#    update()
-#               Updates an existing row in a database,
-#               as defined by a keyed array and a row index
-#
-#    exe_sql()
-#               Executes a SQL command and return a result set
-#
-########################################################################
-
-/***********************************************************************
-MySQL Constants (scope = global)
-----------------------------------------------------------------------*/
 define("MYSQL_ADDRESS", "");          // Define the IP address of your MySQL Server
 define("MYSQL_USERNAME", "");         // Define your MySQL user name
 define("MYSQL_PASSWORD", "");         // Define your MySQL password
@@ -42,19 +18,7 @@ function connect_to_database()
 	return(mysql_connect(MYSQL_ADDRESS, MYSQL_USERNAME, MYSQL_PASSWORD));
 	}
 
-/***********************************************************************
-insert($database, $table, $data_array)
--------------------------------------------------------------
-DESCRIPTION:
-        Inserts a row into database as defined by a keyed array
-INPUT:
-        $database     Name of database (where $table is located)
-        $table        Table where row insertion occurs
-        $data_array   A keyed array with defines the data to insert
-                      (i.e. $data_array['column_name'] = data)
-RETURNS
-        SUCCESS or FAILURE
-***********************************************************************/
+
 function insert($database, $table, $data_array)
 	{
     # Connect to MySQL server and select database
@@ -86,19 +50,7 @@ function insert($database, $table, $data_array)
         }
 	}
 
-/***********************************************************************
-update($database, $table, $data_array, $key_column, $id)
--------------------------------------------------------------
-DESCRIPTION:
-        Inserts a row into database as defined by a keyed array
-INPUT:
-        $database     Name of database (where $table is located)
-        $table        Table where row insertion occurs
-        $data_array   A keyed array with defines the data to insert
-                      (i.e. $data_array['column_name'] = data)
-RETURNS
-        SUCCESS or FAILURE
-***********************************************************************/
+
 function update($database, $table, $data_array, $key_column, $id)
 	{
     # Connect to MySQL server and select database
@@ -131,17 +83,7 @@ function update($database, $table, $data_array, $key_column, $id)
         }
 	}
 
-/***********************************************************************
-exe_sql($database, $sql)
--------------------------------------------------------------
-DESCRIPTION:
-        Executes a SQL command and returns the result
-INPUT:
-        $database     Name of database to operate on
-        $sql          sql command applied to $database
-RETURNS
-        An array containing the results of sql operation
-***********************************************************************/
+
 function exe_sql($database, $sql)
 	{
     # Connect to MySQL server and select database

@@ -1,42 +1,5 @@
 <?php
 
-
-########################################################################
-#
-# LIB_resolve_addresses
-#
-# This library provides routines that create fully resolved
-# web addresses
-#
-#-----------------------------------------------------------------------
-# FUNCTIONS
-#
-#       resolve_address()
-#		    This function returns fully resolved URLs for the $link
-#		    which could be an images, css, javascript file, etc.
-#
-#       get_base_page_address()
-#		    Search from right to left for first occurrence of "/".
-#		    Then use everything from the left of that character as the
-#           page base address.
-#
-#       get_base_domain_address()
-#           Note that the base DOMAIN address is different than the base
-#           PAGE address. The base page address may indicate a directory
-#           structure, while the base domain address is simply the
-#           domain, without any files or directories.
-#
-#-----------------------------------------------------------------------
-
-/***********************************************************************
-resolve_address($link, $page_base)
--------------------------------------------------------------
-DESCRIPTION:
-		This function returns fully resolved URLs for the $link
-		which could be an images, css, javascript file, etc.
-RETURNS:
-		A fully resolved URL for the $link
-***********************************************************************/
 function resolve_address($link, $page_base)
 	{
     #----------------------------------------------------------
@@ -60,15 +23,7 @@ function resolve_address($link, $page_base)
 
 	$abs_done = 0;
 
-    #----------------------------------------------------------
-    # LOOK FOR REFERENCES TO THE BASE DOMAIN ADDRESS
-    #----------------------------------------------------------
-    # There are essentially four types of addresses to resolve:
-    # 1. References to the base domain address
-    # 2. References to higher directories
-    # 3. References to the base directory
-    # 4. Addresses that are alreday fully resolved
-	#
+
 	if($abs_done==0)
 		{
 		# Use domain base address if $link starts with "/"
@@ -161,24 +116,7 @@ function resolve_address($link, $page_base)
 	return $abs_address;
 	}
 
-/***********************************************************************
-get_base_page_address($url)
--------------------------------------------------------------
-DESCRIPTION:
-		Search from right to left for first occurrence of "/".
- 		Then use everything from the left of that character as the page
-		base address.
 
-		If the position of "/" is less than 7, then that character is
-		part of an URL that is directly referenced.
-			(i.e. "http://www.someplace.com".
-		With direct URL references, always make sure that the base page
-		address always ends in a "\".
-INPUTS:
-		$url
-RETURNS:
-		The base page address for $url
-***********************************************************************/
 function get_base_page_address($url)
 	{
 	$slash_position = strrpos($url, "/");
@@ -201,23 +139,7 @@ function get_base_page_address($url)
 	return $page_base;
 	}
 
-/***********************************************************************
-get_base_domain_address($page_base)
--------------------------------------------------------------
-DESCRIPTION:
-		Note that the base DOMAIN address is different than the base
-		PAGE address. The base page address may indicate a directory
-		structure, while the base domain address is simply the domain,
-		without any files or directories.
 
-		The base domain address found by taking everything to the right
-		of the first "/" once past the initial "/"'s found after the
-		protocol specifier (http:// or https://)
-INPUTS:
-		$page_base, (from get_base_page_address)
-RETURNS:
-		The base page domain address for URL
-***********************************************************************/
 function get_base_domain_address($page_base)
 	{
 	for ($pointer=8; $pointer<strlen($page_base); $pointer++)
@@ -237,14 +159,6 @@ function get_base_domain_address($page_base)
 	}
 
 
-/***********************************************************************
-move_address_back_one_level($page_base, $object_source)
--------------------------------------------------------------
-DESCRIPTION:
-		This function is used by the library and not intended for
-        external use.
--------------------------------------------------------------
-*/
 function move_address_back_one_level($page_base, $object_source)
 	{
 	// bring page base back one leve

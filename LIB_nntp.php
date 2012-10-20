@@ -1,39 +1,5 @@
 <?php
 
-
-#-----------------------------------------------------------------------
-# F U N C T I O N S
-#
-# read_nntp_buffer($socket)
-#    Used by the other functions to read the buffer that receives data
-#    from news servers
-#
-# get_nntp_groups($server)
-#    Returns a list of newsgroups on a valid news server
-#
-# get_nntp_article_ids($server, $newsgroup)
-#    Returns a list of article ids for a newsgroup on a news server
-#
-# read_nntp_article($server, $newsgroup, $article)
-#    Downloads a single article from a news group on a news server
-#
-#-----------------------------------------------------------------------
-
-/***********************************************************************
-read_nntp_buffer($socket)
--------------------------------------------------------------
-DESCRIPTION:
-        Reads data from a news server
-
-        THIS FUNCTION IS USED INTERNALLY AND NOT USEFUL ALONE
-
-INPUT:
-        $socket       Reference to the socket of the connection to
-                      the news server
-
-OUTPUT:
-        The data sent from the news server
-***********************************************************************/
 function read_nntp_buffer($socket)
     {
     $this_line ="";
@@ -51,19 +17,6 @@ function read_nntp_buffer($socket)
     return $buffer;
     }
 
-/***********************************************************************
-get_nntp_groups($server)
--------------------------------------------------------------
-DESCRIPTION:
-        Reads available newsgroups from a news server
-
-INPUT:
-        $socket       Reference to the socket of the connection to
-                      the news server
-
-OUTPUT:
-        A list of newsgroups on the news server
-***********************************************************************/
 function get_nntp_groups($server)
     {
     # Open socket connection to the mail server
@@ -88,19 +41,7 @@ function get_nntp_groups($server)
     return $groups_array;
     }
 
-/***********************************************************************
-get_nntp_article_ids($server, $newsgroup)
--------------------------------------------------------------
-DESCRIPTION:
-        Reads available article ids from a news server
 
-INPUT:
-        $server      Address of news server
-        $newsgroup   Name of newsgroup
-
-OUTPUT:
-        Returns available article ids for the newsgroup on the server
-***********************************************************************/
 function get_nntp_article_ids($server, $newsgroup)
     {
     # Open socket connection to the mail server
@@ -129,20 +70,7 @@ function get_nntp_article_ids($server, $newsgroup)
     return $return_array;
     }
 
-/***********************************************************************
-read_nntp_article($server, $newsgroup, $article)
--------------------------------------------------------------
-DESCRIPTION:
-        Reads article from a news server
 
-INPUT:
-        $server      Address of news server
-        $newsgroup   Name of newsgroup
-        $article_id  ID of article to read
-
-OUTPUT:
-        Returns the article specified by the article id
-***********************************************************************/
 function read_nntp_article($server, $newsgroup, $article)
     {
     # Open socket connection to the mail server

@@ -1,60 +1,10 @@
 <?php
 
-
-########################################################################
-#
-# LIB_pop3.php     POP3 Mail Routines
-#
-# This library provides routines that read and delete mail form mail
-# servers that employ POP3 (Post Office Protocol)
-#
-# Detailed information about POP3 is found in RFC 1939
-# http://www.faqs.org/rfcs/rfc1939.html
-#
-#-----------------------------------------------------------------------
-# FUNCTIONS
-#
-#    POP3_connect     Initiates a POP3 connection to a mail server and
-#                     returns a connection hand and indication if the
-#                     username and password were authenticated.
-#
-#    POP3_list()      Executes a POP3 LIST command
-#
-#    POP3_retr()      Executes a POP3 RETR command
-#
-#    POP3_delete()    Executes a POP3 DELE command
-#
-#    POP3_quit()      Executes a POP3 QUIT command
-#
-#-----------------------------------------------------------------------
-
-/***********************************************************************
-POP3 Constants (scope = global)
-----------------------------------------------------------------------*/
 define("END_CHAR", ".");        // Identifies the POP3 multi line
                                 // termination character (if found
                                 // at the beginning of a line.
 define("POP3_PORT", "110");     // POP3 servers listen to port 110
 
-/***********************************************************************
-POP3_connect($server, $user, $pass)
--------------------------------------------------------------
-DESCRIPTION:
-        Attempts to open a socket to the POP3 server identified by
-        $server. Uses $user and $pass to authenticate a user ith an
-        email account on $server.
-
-OUTPUT:
-        $array['login']   True if authentication is successful
-                          otherwise false
-        $array['handle']  The socket id used in subsequent commands
-        $array['message'] Signon message returned by mail server
-
-INPUT:
-        $server           Address of POP3 mail server
-        $user             Email address of email account
-        $pass             Password for email account
-***********************************************************************/
 function POP3_connect($server, $user, $pass)
     {
     $error="";
@@ -92,16 +42,6 @@ function POP3_connect($server, $user, $pass)
     return $ret_array;
     }
 
-/***********************************************************************
-POP3_list($handle)
--------------------------------------------------------------
-DESCRIPTION:
-        Creates an array, each element containing the pair "id size"
-OUTPUT:
-        $list_array[n][id size]
-INPUT:
-        $handle           From POP3_connect() function
-***********************************************************************/
 function POP3_list($handle)
     {
     // Initialization
@@ -125,18 +65,6 @@ function POP3_list($handle)
         }
     }
 
-/***********************************************************************
-POP3_retr($handle, $id)
--------------------------------------------------------------
-DESCRIPTION:
-        Executes a POP3 RETR command
-OUTPUT:
-        $message    The entire email message (including headers)
-                    that corresponds to $id
-INPUT:
-        $handle     From POP3_connect() function
-        $id         From POP3_list() function
-***********************************************************************/
 function POP3_retr($handle, $id)
     {
     // Initialize
@@ -158,16 +86,6 @@ function POP3_retr($handle, $id)
     return $message;
     }
 
-/***********************************************************************
-POP3_delete($handle, $id)
--------------------------------------------------------------
-DESCRIPTION:
-        Executes a POP3 DELE command, which marks email records,
-        indicated by $id, for deletion. The record is not actually
-        deleted until a QUIT command is issued.
-INPUT:
-        $handle           From POP3_connect() function
-***********************************************************************/
 function POP3_delete($handle, $id)
     {
     fputs($handle, "DELE ".$id."\n");
@@ -175,15 +93,7 @@ function POP3_delete($handle, $id)
     return $reply;
     }
 
-/***********************************************************************
-POP3_quit($handle)
--------------------------------------------------------------
-DESCRIPTION:
-        Executes a POP3 QUIT command, which ends the POP3 session and
-        deletes any records previously marked with POP3_delete().
-INPUT:
-        $handle           From POP3_connect() function
-***********************************************************************/
+
 function POP3_quit($handle)
     {
     fputs($handle, "QUIT\n");

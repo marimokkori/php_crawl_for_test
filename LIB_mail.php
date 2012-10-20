@@ -1,31 +1,6 @@
 <?php
 
 
-##################################################################
-# LIB_mail.php
-# An wrapper for PHP's built-in mail() function.
-#-----------------------------------------------------------------
-#formatted_mail($subject, $message, $address, $content_type)
-#
-#    Sends an HTML or text formatted email message though the function
-#    formatted_mail().
-#
-#    INPUTS:
-#     $subject     A string used as the email's subject line
-#
-#     $message     A string which is the body of the email
-#
-#     $address     An array of addresses used by the email
-#                   $address['to']       address of the recipient
-#                   $address['from']     address of the sender
-#                   $address['replyto']  address where replies are sent
-#                   $address['cc']       address of person copied on the message
-#                   $address['bcc']      like cc, but address is not disclosed
-#
-#    $content_type Defines the mime type typical values are:
-#                    "Text/plain"
-#                    "Text/html"
-#-----------------------------------------------------------------
 function formatted_mail($subject, $message, $address, $content_type)
 	{
    	# Set defaults

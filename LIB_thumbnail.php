@@ -1,33 +1,5 @@
 <?php
 
-
-/*
-#-----------------------------------------------------------------------
-#
-# LIB_thumbnail     JPG Thumbnailing routine
-#
-#-----------------------------------------------------------------------
-
-create_thumbnail($org_file, $new_file_name, $max_width, $max_height)
--------------------------------------------------------------
-DESCRIPTION:
-		Creates a thumbnail image of a larger image
-
-INPUT:
-        $org_file
-            The name of the original image file
-
-        $new_file_name
-            The name of the thumbnail image file
-
-        $max_width
-            The maximum width of the thumbnail file
-        $max_height
-            The maximum height of the thumbnail file
-RETURNS:
-		Creates a thumbnail file with the file name $new_file_name
-#########################################################################
-*/
 function create_thumbnail($org_file, $new_file_name, $max_width, $max_height)
     {
 	// Initialization

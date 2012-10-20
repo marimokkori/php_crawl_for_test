@@ -1,37 +1,5 @@
 <?php
 
-
-########################################################################
-#
-# LIB_rss
-#
-# This library provides routines useful when working with RSS feeds
-#
-#-----------------------------------------------------------------------
-# FUNCTIONS
-#
-# download_parse_rss($target)
-#		    Downloads and parses rss data
-#
-# display_rss_array($rss_array)
-#		    Displays a parsed news feed
-#
-# strip_cdata_tags()
-#           Removes cdata[] tags from strings
-#
-#-----------------------------------------------------------------------
-
-/***********************************************************************
-download_parse_rss($target)
--------------------------------------------------------------
-DESCRIPTION:
-		Downloads and parses a RSS web site
-INPUT:
-		$target
-            The web address of the RSS feed
-RETURNS:
-		The parsed RSS feed
-***********************************************************************/
 function download_parse_rss($target)
     {
     # download tge rss page
@@ -54,17 +22,7 @@ function download_parse_rss($target)
     return $rss_array;
     }
 
-/***********************************************************************
-display_rss_array($rss_array)
--------------------------------------------------------------
-DESCRIPTION:
-		Displays parsed RSS data
-INPUT:
-		$target
-            The web address of the RSS feed
-RETURNS:
-		Sends results to the display device
-***********************************************************************/
+
 function display_rss_array($rss_array)
     {?>
     <table border="0">
@@ -92,18 +50,7 @@ function display_rss_array($rss_array)
     </table>
   <?}
 
-/***********************************************************************
-strip_cdata_tags($string)
--------------------------------------------------------------
-DESCRIPTION:
-		Removes CDDATA tags from a string
 
-INPUT:
-		$string
-            Text containing CDDATA tags
-RETURNS:
-		Returns a string free of CDDATA tags
-***********************************************************************/
 function strip_cdata_tags($string)
     {
     # Strip XML CDATA characters from all array elements

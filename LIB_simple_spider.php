@@ -1,18 +1,5 @@
 <?php
 
-
-/***********************************************************************
-harvest_links($url)
--------------------------------------------------------------
-DESCRIPTION:
-		Collects all links from a web page
-
-INPUT:
-		$url
-            Fully resolved web address of target web page
-RETURNS:
-		Returns an array of links
-***********************************************************************/
 function harvest_links($url)
     {
     # Initialize
@@ -37,24 +24,6 @@ function harvest_links($url)
     return $link_array;
     }
 
-/***********************************************************************
-archive_links($spider_array, $penetration_level, $temp_link_array)
--------------------------------------------------------------
-DESCRIPTION:
-		Puts raw links into an archival array
-
-INPUT:
-        $spider_array
-            The name of the archival array
-
-        $penetration_level
-            Page depth at which the spidering was conducted
-
-        $temp_link_array
-            $temporary array of raw links
-RETURNS:
-		Returns archival array
-***********************************************************************/
 function archive_links($spider_array, $penetration_level, $temp_link_array)
     {
     for($xx=0; $xx<count($temp_link_array); $xx++)
@@ -68,18 +37,7 @@ function archive_links($spider_array, $penetration_level, $temp_link_array)
     return $spider_array;
     }
 
-/***********************************************************************
-get_domain($url)
--------------------------------------------------------------
-DESCRIPTION:
-        Gets the domain for a web address
-INPUT:
-        $url
-            The web address
 
-RETURNS:
-		Returns the domain for the inputed url
-***********************************************************************/
 function get_domain($url)
     {
     // Remove protocol from $url
@@ -93,21 +51,6 @@ function get_domain($url)
     return $url;
     }
 
-/***********************************************************************
-excluded_link($spider_array, $link)
--------------------------------------------------------------
-DESCRIPTION:
-        Tests a link to see if it should be in the archival array
-INPUT:
-        $spider_array
-            The spider's archival array
-
-        $link
-            The link under test
-RETURNS:
-		Returns TRUE or FALSE depending on if the link should be
-        excluded
-***********************************************************************/
 function excluded_link($spider_array, $link)
     {
     # Initialization

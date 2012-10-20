@@ -1,14 +1,9 @@
 <?php
 
-#-------------------------------------
-# Define 100 series http codes (informational)
-#-------------------------------------
 $status_code_array[100]  = "100 Continue";
 $status_code_array[101]  = "101 Switching Protocols";
 
-#-------------------------------------
-# Define 200 series http codes (successful)
-#-------------------------------------
+
 $status_code_array[200]  = "200 OK";
 $status_code_array[201]  = "201 Created";
 $status_code_array[202]  = "202 Accepted";
@@ -17,9 +12,7 @@ $status_code_array[204]  = "204 No Content";
 $status_code_array[205]  = "205 Reset Content";
 $status_code_array[206]  = "206 Partial Content";
 
-#-------------------------------------
-# Define 300 series http codes (redirection)
-#-------------------------------------
+
 $status_code_array[300]  = "300 Multiple Choices";
 $status_code_array[301]  = "301 Moved Permanently";
 $status_code_array[302]  = "302 Found";
@@ -29,9 +22,7 @@ $status_code_array[305]  = "305 Use Proxy";
 $status_code_array[306]  = "306 (Unused)";
 $status_code_array[307]  = "307 Temporary Redirect";
 
-#-------------------------------------
-# Define 400 series http codes (client error)
-#-------------------------------------
+
 $status_code_array[400]  = "400 Bad Request";
 $status_code_array[401]  = "401 Unauthorized";
 $status_code_array[402]  = "402 Payment Required";
@@ -51,9 +42,7 @@ $status_code_array[415]  = "415 Unsupported Media Type";
 $status_code_array[416]  = "416 Requested Range Not Satisfiable";
 $status_code_array[417]  = "417 Expectation Failed";
 
-#-------------------------------------
-# Define 500 series http codes (server error)
-#-------------------------------------
+
 $status_code_array[500]  = "500 Internal Server Error";
 $status_code_array[501]  = "501 Not Implemented";
 $status_code_array[502]  = "502 Bad Gateway";
